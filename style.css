@@ -7,12 +7,12 @@
 /* ===== Farver og fonte ===== */
 :root {
   /* Farver fra Figma (klikbar protoype) */
-  --bordeaux: #991c3a;    /* knapper, links, priser, H1 */
-  --brun: #592728;        /* brødtekst, overskrifter, ikoner */
-  --beige: #ebdaba;       /* hero, søgefelt, kort, footer */
-  --koral: #ed7b7c;       /* tilbuds-labels */
-  --creme: #fdfbf5;       /* sidebaggrund */
-  --hvid: #ffffff;        /* header og produktkort */
+  --bordeaux: #991c3a; /* knapper, links, priser, H1 */
+  --brun: #592728; /* brødtekst, overskrifter, ikoner */
+  --beige: #ebdaba; /* hero, søgefelt, kort, footer */
+  --koral: #ed7b7c; /* tilbuds-labels */
+  --creme: #fdfbf5; /* sidebaggrund */
+  --hvid: #ffffff; /* header og produktkort */
 
   /* Fonte (hentes fra Google Fonts i <head>) */
   --font-overskrift: "Kaisei Tokumin", serif;
@@ -65,11 +65,20 @@ h3 {
   margin-bottom: var(--luft-m);
 }
 
-h1 { font-size: clamp(2rem, 5vw, 3.5rem); color: var(--bordeaux); }
-h2 { font-size: clamp(1.5rem, 4vw, 2rem); }
-h3 { font-size: 1.25rem; }
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--bordeaux);
+}
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+h3 {
+  font-size: 1.25rem;
+}
 
-p { margin-bottom: var(--luft-m); }
+p {
+  margin-bottom: var(--luft-m);
+}
 
 a {
   color: var(--bordeaux);
@@ -86,7 +95,7 @@ a:hover {
   padding: var(--luft-l) var(--luft-m);
 }
 
-.knap {
+/* .knap {
   display: inline-block;
   font-family: var(--font-ui);
   font-weight: 600;
@@ -102,7 +111,7 @@ a:hover {
 .knap:hover {
   color: var(--hvid);
   background-color: var(--brun);
-}
+} */
 
 /* ===== Header ===== */
 header {
