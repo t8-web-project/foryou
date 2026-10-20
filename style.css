@@ -1,0 +1,183 @@
+/* =====================================================
+   FÆLLES STYLES – bruges på ALLE sider
+   Ret farver og fonte her, så ændres de overalt.
+   Side-specifik CSS skrives i fx index.css
+   ===================================================== */
+
+/* ===== Farver og fonte ===== */
+:root {
+  /* Farver fra Figma (klikbar protoype) */
+  --bordeaux: #991c3a;    /* knapper, links, priser, H1 */
+  --brun: #592728;        /* brødtekst, overskrifter, ikoner */
+  --beige: #ebdaba;       /* hero, søgefelt, kort, footer */
+  --koral: #ed7b7c;       /* tilbuds-labels */
+  --creme: #fdfbf5;       /* sidebaggrund */
+  --hvid: #ffffff;        /* header og produktkort */
+
+  /* Fonte (hentes fra Google Fonts i <head>) */
+  --font-overskrift: "Kaisei Tokumin", serif;
+  --font-kort: "Baskervville SC", serif; /* kortoverskrifter */
+  --font-broed: "Junge", serif;
+  --font-ui: "Inter", system-ui, sans-serif;
+
+  /* Afstande */
+  --luft-s: 0.5rem;
+  --luft-m: 1rem;
+  --luft-l: 2rem;
+  --max-bredde: 1200px;
+}
+
+/* ===== Nulstilling ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  font-family: var(--font-broed);
+  line-height: 1.6;
+  color: var(--brun);
+  background-color: var(--creme);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; /* skubber footeren ned i bunden */
+}
+
+/* ===== Typografi ===== */
+h1,
+h2,
+h3 {
+  font-family: var(--font-overskrift);
+  color: var(--brun);
+  line-height: 1.2;
+  margin-bottom: var(--luft-m);
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); color: var(--bordeaux); }
+h2 { font-size: clamp(1.5rem, 4vw, 2rem); }
+h3 { font-size: 1.25rem; }
+
+p { margin-bottom: var(--luft-m); }
+
+a {
+  color: var(--bordeaux);
+}
+
+a:hover {
+  color: var(--brun);
+}
+
+/* ===== Hjælpeklasser ===== */
+.wrapper {
+  max-width: var(--max-bredde);
+  margin-inline: auto;
+  padding: var(--luft-l) var(--luft-m);
+}
+
+.knap {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--hvid);
+  background-color: var(--bordeaux);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.knap:hover {
+  color: var(--hvid);
+  background-color: var(--brun);
+}
+
+/* ===== Header ===== */
+header {
+  background-color: var(--hvid);
+  border-bottom: 3px solid var(--beige);
+}
+
+.header_indhold {
+  max-width: var(--max-bredde);
+  margin-inline: auto;
+  padding: var(--luft-m);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--luft-m);
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--luft-m);
+}
+
+header nav a {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--brun);
+}
+
+header nav a:hover {
+  color: var(--bordeaux);
+}
+
+/* ===== Footer ===== */
+footer {
+  background-color: var(--beige);
+  margin-top: var(--luft-l);
+}
+
+.footer_indhold {
+  max-width: var(--max-bredde);
+  margin-inline: auto;
+  padding: var(--luft-l) var(--luft-m);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--luft-l);
+}
+
+footer h3 {
+  font-size: 1rem;
+}
+
+footer ul {
+  list-style: none;
+}
+
+footer a {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--brun);
+}
+
+.copyright {
+  text-align: center;
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  padding: var(--luft-m);
+  margin: 0;
+}
