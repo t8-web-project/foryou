@@ -1,0 +1,719 @@
+/* =====================================================
+   FÆLLES KOMPONENTER – bruges på kurv og produktside
+   (menu, knapper, labels, stjerner, produktkort, brødkrumme, toast)
+   Indlæses efter style.css
+   ===================================================== */
+
+[hidden] {
+  display: none !important;
+}
+
+/* Kun for skærmlæsere */
+.sr_only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+svg.ikon {
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ui_tekst {
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+}
+
+/* ===== Header (mobil) ===== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  color: var(--brun);
+  background-color: var(--hvid);
+  border-bottom: none;
+}
+
+header a {
+  color: inherit;
+  text-decoration: none;
+}
+
+header ul {
+  list-style: none;
+}
+
+.hovedraekke {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1440px;
+  height: 60px;
+  margin-inline: auto;
+  padding: 8px;
+}
+
+.logo img {
+  width: 104px;
+  height: 39px;
+  object-fit: contain;
+}
+
+.ikon_gruppe {
+  display: flex;
+  width: 88px;
+}
+
+.ikon_knap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--brun);
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.ikon_knap img {
+  width: 24px;
+  height: 24px;
+}
+
+.ikon_knap .ikon_tekst {
+  display: none;
+}
+
+.menu_knap svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--brun);
+}
+
+.kurv_antal {
+  position: absolute;
+  top: 4px;
+  left: 26px;
+  min-width: 19px;
+  padding: 1px 5px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.3px;
+  text-align: center;
+  color: var(--hvid);
+  background-color: var(--bordeaux);
+  border-radius: 999px;
+}
+
+.kurv_antal:empty {
+  display: none;
+}
+
+/* Bump-animation når der lægges noget i kurven */
+.kurv_antal.bump {
+  animation: bump 0.4s ease;
+}
+
+@keyframes bump {
+  50% {
+    transform: scale(1.35);
+  }
+}
+
+.desktop_ikon {
+  display: none;
+}
+
+/* Hovednavigationen bliver til en skuffe på mobil */
+.hovednavigation {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 30;
+  width: min(320px, 85vw);
+  padding: 16px;
+  background-color: var(--hvid);
+  box-shadow: 0 0 24px rgba(58, 0, 16, 0.12);
+  transform: translateX(-105%);
+  transition: transform 0.3s ease;
+}
+
+.hovednavigation.aaben {
+  transform: none;
+}
+
+.luk_menu {
+  display: block;
+  margin: 0 0 16px auto;
+  padding: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.luk_menu img {
+  width: 24px;
+  height: 24px;
+}
+
+.hovednavigation ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.hovednavigation a {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 16px;
+  font-family: var(--font-ui);
+  color: var(--brun);
+}
+
+.hovednavigation a svg {
+  display: none;
+  width: 16px;
+  height: 16px;
+}
+
+.hovednavigation a:hover,
+.hovednavigation a[aria-current="page"] {
+  color: var(--bordeaux);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.menu_baggrund {
+  position: fixed;
+  inset: 0;
+  z-index: 25;
+  background-color: rgba(89, 39, 40, 0.3);
+}
+
+/* ===== Header (desktop) ===== */
+@media (min-width: 900px) {
+  .hovedraekke {
+    height: 88px;
+    padding: 18px 80px;
+  }
+
+  .logo img {
+    width: 140px;
+    height: 52px;
+  }
+
+  .ikon_gruppe {
+    width: auto;
+    gap: 28px;
+  }
+
+  .menu_knap {
+    display: none;
+  }
+
+  .desktop_ikon {
+    display: flex;
+  }
+
+  .ikon_gruppe_venstre {
+    display: none;
+  }
+
+  .ikon_knap {
+    padding: 0;
+  }
+
+  .ikon_knap .ikon_tekst {
+    display: block;
+  }
+
+  .kurv_antal {
+    top: -6px;
+    left: auto;
+    right: -19px;
+    min-width: 21px;
+    padding: 2px 6px;
+    background-color: var(--brun);
+  }
+
+  .hovednavigation {
+    position: static;
+    width: auto;
+    padding: 0 80px;
+    border-top: 1px solid var(--beige);
+    border-bottom: 1px solid var(--beige);
+    box-shadow: none;
+    transform: none;
+    transition: none;
+  }
+
+  .luk_menu,
+  .menu_baggrund {
+    display: none;
+  }
+
+  .hovednavigation ul {
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .hovednavigation a svg {
+    display: block;
+  }
+}
+
+/* ===== Nulstilling inde i main ===== */
+main h1,
+main h2,
+main h3,
+main p {
+  margin-bottom: 0;
+}
+
+main ul,
+main ol {
+  list-style: none;
+}
+
+main a {
+  color: inherit;
+  text-decoration: none;
+}
+
+main a:hover {
+  color: inherit;
+}
+
+button,
+input,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--bordeaux);
+  outline-offset: 2px;
+}
+
+/* Sektioner har samme bredde og luft på alle sider */
+.wrapper {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: 0 16px;
+}
+
+/* ===== Typografi ===== */
+.label_tekst {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.sektion_overskrift {
+  font-family: var(--font-overskrift);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 34px;
+  letter-spacing: -0.2px;
+}
+
+.pil_link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pil_link svg {
+  width: 18px;
+  height: 18px;
+}
+
+.pil_link:hover {
+  text-decoration: underline;
+}
+
+/* ===== Brødkrumme ===== */
+.broedkrumme ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding-block: 12px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.broedkrumme li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.broedkrumme svg {
+  width: 14px;
+  height: 14px;
+}
+
+.broedkrumme a:hover {
+  text-decoration: underline;
+}
+
+/* På mobil vises kun et link tilbage */
+.broedkrumme .kun_desktop {
+  display: none;
+}
+
+/* ===== Knapper ===== */
+.knap {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 14px 28px;
+  font-family: var(--font-ui);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.knap_outline {
+  color: var(--bordeaux);
+  border: 1.5px solid var(--bordeaux);
+}
+
+main .knap_outline:hover {
+  color: var(--hvid);
+  background-color: var(--bordeaux);
+}
+
+.knap_primaer,
+main .knap_primaer:hover {
+  color: var(--hvid);
+}
+
+.knap_primaer {
+  background-color: var(--bordeaux);
+}
+
+.knap_primaer:hover {
+  background-color: var(--brun);
+}
+
+/* ===== Labels ===== */
+.label {
+  display: inline-block;
+  padding: 5px 10px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.3px;
+  color: var(--hvid);
+  background-color: var(--koral);
+  border-radius: 999px;
+}
+
+.label_moerk {
+  background-color: var(--bordeaux);
+}
+
+/* ===== Stjerner ===== */
+.stjerner {
+  display: flex;
+  gap: 2px;
+}
+
+.stjerner svg {
+  width: 14px;
+  height: 14px;
+  padding: 1.5px;
+  fill: var(--bordeaux);
+}
+
+.stjerner svg.tom {
+  opacity: 0.25;
+}
+
+/* ===== Favorit-knap (hjerte) ===== */
+.favorit_knap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  background-color: var(--hvid);
+  border-radius: 999px;
+}
+
+.favorit_knap svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--brun);
+  stroke-width: 1.8;
+  transition: fill 0.2s;
+}
+
+.favorit_knap.valgt svg {
+  fill: var(--bordeaux);
+  stroke: var(--bordeaux);
+}
+
+/* ===== Produktkort ===== */
+.produkt_grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.produktkort {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--hvid);
+  border: 1px solid var(--beige);
+  border-radius: 16px;
+}
+
+.billedomraade {
+  aspect-ratio: 1 / 1;
+  background-color: var(--beige);
+}
+
+.billedomraade img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.produktkort:hover .billedomraade img {
+  transform: scale(1.04);
+}
+
+.billedomraade .label {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+
+.billedomraade .favorit_knap {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+}
+
+.produktkort .info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 6px;
+  padding: 12px 12px 14px;
+}
+
+.produktkort h3 {
+  min-height: 48px;
+  font-family: var(--font-broed);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+/* Hele kortet kan klikkes via navnet */
+.produktkort h3 a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.produktkort h3 a:hover {
+  text-decoration: underline;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.rating .stjerner {
+  margin-right: 2px;
+}
+
+.pris {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.pris .ny_pris {
+  font-family: var(--font-ui);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  color: var(--bordeaux);
+}
+
+.pris .foer_pris {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  line-height: 18px;
+  text-decoration: line-through;
+  color: var(--brun);
+}
+
+/* Knappen ligger over linket, så den stadig kan klikkes */
+.produktkort .knap {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-top: auto;
+}
+
+.produktkort .info .afstand {
+  height: 6px;
+}
+
+/* ===== Besked når noget lægges i kurven ===== */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--hvid);
+  background-color: var(--bordeaux);
+  border-radius: 999px;
+  box-shadow: 0 4px 16px rgba(58, 0, 16, 0.12);
+  transform: translate(-50%, 150%);
+  transition: transform 0.3s ease;
+}
+
+.toast.vis {
+  transform: translate(-50%, 0);
+}
+
+.toast a {
+  color: var(--hvid);
+  text-decoration: underline;
+}
+
+.tom_besked {
+  grid-column: 1 / -1;
+  padding: 40px 0;
+  text-align: center;
+}
+
+/* ===== Desktop ===== */
+@media (min-width: 900px) {
+  .wrapper {
+    padding-inline: 80px;
+  }
+
+  .sektion_overskrift {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  /* Brødkrumme */
+  .broedkrumme ol {
+    gap: 8px;
+    padding-block: 24px 0;
+  }
+
+  .broedkrumme li {
+    gap: 8px;
+  }
+
+  .broedkrumme .kun_mobil {
+    display: none;
+  }
+
+  .broedkrumme .kun_desktop {
+    display: flex;
+  }
+
+  .broedkrumme li:not(:last-child) {
+    color: var(--brun);
+  }
+
+  .broedkrumme li:last-child {
+    color: var(--bordeaux);
+  }
+
+  /* Produktkort */
+  .produkt_grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px;
+  }
+
+  .produktkort {
+    border-color: var(--beige);
+  }
+
+  .billedomraade {
+    height: 300px;
+    aspect-ratio: auto;
+  }
+
+  .billedomraade .label {
+    top: 12px;
+    left: 12px;
+  }
+
+  .billedomraade .favorit_knap {
+    top: 12px;
+    right: 12px;
+  }
+
+  .produktkort .info {
+    padding: 16px 16px 18px;
+  }
+}

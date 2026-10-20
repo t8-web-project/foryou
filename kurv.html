@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Din kurv hos ForYou.">
+  <title>ForYou – Kurv</title>
+  <link rel="icon" type="image/png" href="img/logo.png">
+
+  <!-- Fonte -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Baskervville+SC:wght@700&family=Inter:wght@400;500;600;700&family=Junge&family=Kaisei+Tokumin:wght@700&display=swap">
+
+  <!-- CSS: fælles først, så sidens egen -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="faelles.css">
+  <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="kurv.css">
+
+  <script src="faelles.js" defer></script>
+  <script src="kurv.js" defer></script>
+</head>
+
+<body>
+
+  <!-- ===== HEADER (samme på alle sider) ===== -->
+  <header>
+    <div class="hovedraekke">
+      <div class="ikon_gruppe ikon_gruppe_venstre">
+        <button class="ikon_knap menu_knap" aria-label="Åbn menu" aria-expanded="false">
+          <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+        </button>
+        <a href="productlist.html?favoritter=1" class="ikon_knap" aria-label="Favoritter"><img src="img/ikon-hjerte.png" alt=""></a>
+      </div>
+
+      <a href="index.html" class="logo"><img src="img/logo.png" alt="ForYou – til forsiden"></a>
+
+      <div class="ikon_gruppe">
+        <a href="productlist.html?favoritter=1" class="ikon_knap desktop_ikon"><img src="img/ikon-hjerte.png" alt=""><span class="ikon_tekst">Favoritter</span></a>
+        <a href="#" class="ikon_knap"><img src="img/ikon-bruger.png" alt=""><span class="ikon_tekst">Log ind</span><span class="sr_only">Log ind</span></a>
+        <a href="kurv.html" class="ikon_knap"><img src="img/ikon-kurv.png" alt=""><span class="ikon_tekst">Kurv</span><span class="sr_only">Kurv</span><span class="kurv_antal" aria-label="varer i kurven"></span></a>
+      </div>
+    </div>
+
+    <nav class="hovednavigation ui_tekst" aria-label="Hovedmenu">
+      <button class="luk_menu" aria-label="Luk menu"><img src="img/ikon-luk.png" alt=""></button>
+      <ul>
+        <li><a href="productlist.html?kategori=makeup">Makeup <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg></a></li>
+        <li><a href="productlist.html?kategori=hudpleje">Hudpleje <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg></a></li>
+        <li><a href="productlist.html?kategori=parfume">Parfume <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg></a></li>
+        <li><a href="productlist.html?sort=nyeste">Nyheder</a></li>
+        <li><a href="productlist.html">Mærker</a></li>
+        <li><a href="index.html#inspiration">Inspiration</a></li>
+        <li><a href="productlist.html?sort=rabat">Tilbud</a></li>
+      </ul>
+    </nav>
+    <div class="menu_baggrund" hidden></div>
+  </header>
+
+  <!-- ===== INDHOLD ===== -->
+  <main>
+    <nav class="broedkrumme wrapper" aria-label="Brødkrumme">
+      <ol>
+        <li class="kun_mobil"><a href="index.html"><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" /></svg>Fortsæt med at handle</a></li>
+        <li class="kun_desktop"><a href="index.html">Forside</a><svg class="ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg></li>
+        <li class="kun_desktop" aria-current="page">Kurv</li>
+      </ol>
+    </nav>
+
+    <div class="kurv_side wrapper">
+      <section class="kurv" aria-labelledby="kurv_overskrift">
+        <h1 id="kurv_overskrift">Din kurv</h1>
+        <ul class="kurv_liste"></ul>
+      </section>
+
+      <aside class="opsummering" aria-label="Opsummering">
+        <h2>Ordreoversigt</h2>
+        <dl>
+          <div><dt>Varer</dt><dd class="sum_varer">$0.00</dd></div>
+          <div><dt>Levering</dt><dd class="sum_levering">$0.00</dd></div>
+          <div class="sum_rabat_raekke" hidden><dt>3 for 2 på hudpleje</dt><dd class="sum_rabat">-$0.00</dd></div>
+          <div class="total"><dt>I alt <span>inkl. moms</span></dt><dd class="sum_total">$0.00</dd></div>
+        </dl>
+        <p class="fragt_besked"></p>
+        <a href="#kasse" class="knap knap_primaer til_kassen">Gå til kassen</a>
+      </aside>
+    </div>
+
+    <!-- ===== Kassen: html-valideret formular ===== -->
+    <section class="kasse wrapper" id="kasse" aria-labelledby="kasse_overskrift">
+      <h2 class="sektion_overskrift" id="kasse_overskrift">Kassen</h2>
+
+      <form class="kasse_form" novalidate>
+        <fieldset>
+          <legend>Kontaktoplysninger</legend>
+          <div class="felt_raekke">
+            <label class="felt">
+              <span>Fornavn *</span>
+              <input type="text" name="fornavn" autocomplete="given-name" required minlength="2">
+              <span class="fejl">Skriv dit fornavn</span>
+            </label>
+            <label class="felt">
+              <span>Efternavn *</span>
+              <input type="text" name="efternavn" autocomplete="family-name" required minlength="2">
+              <span class="fejl">Skriv dit efternavn</span>
+            </label>
+          </div>
+          <label class="felt">
+            <span>E-mail *</span>
+            <input type="email" name="email" autocomplete="email" required>
+            <span class="fejl">Skriv en gyldig e-mail, fx navn@mail.dk</span>
+          </label>
+          <label class="felt">
+            <span>Telefon *</span>
+            <input type="tel" name="telefon" autocomplete="tel" required pattern="[0-9 ]{8,11}" placeholder="12 34 56 78">
+            <span class="fejl">Skriv et telefonnummer på 8 cifre</span>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Leveringsadresse</legend>
+          <label class="felt">
+            <span>Adresse *</span>
+            <input type="text" name="adresse" autocomplete="street-address" required>
+            <span class="fejl">Skriv din adresse</span>
+          </label>
+          <div class="felt_raekke">
+            <label class="felt felt_lille">
+              <span>Postnr. *</span>
+              <input type="text" name="postnr" autocomplete="postal-code" inputmode="numeric" required pattern="[0-9]{4}" maxlength="4">
+              <span class="fejl">Postnummeret skal være 4 cifre</span>
+            </label>
+            <label class="felt">
+              <span>By *</span>
+              <input type="text" name="by" autocomplete="address-level2" required>
+              <span class="fejl">Skriv din by</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="betaling">
+          <legend>Betaling</legend>
+          <label class="valg"><input type="radio" name="betaling" value="MobilePay" required checked> MobilePay</label>
+          <label class="valg"><input type="radio" name="betaling" value="Kort" required> Betalingskort</label>
+          <label class="valg"><input type="radio" name="betaling" value="Apple Pay" required> Apple Pay</label>
+        </fieldset>
+
+        <label class="valg betingelser">
+          <input type="checkbox" name="betingelser" required>
+          <span>Jeg accepterer <a href="#">handelsbetingelserne</a> *</span>
+        </label>
+        <label class="valg">
+          <input type="checkbox" name="nyhedsbrev">
+          <span>Ja tak til nyhedsbrev med tilbud</span>
+        </label>
+        <span class="fejl betingelser_fejl">Du skal acceptere handelsbetingelserne</span>
+
+        <button type="submit" class="knap knap_primaer bestil">Bestil</button>
+      </form>
+    </section>
+
+    <!-- Vises når ordren er sendt -->
+    <section class="tak wrapper" hidden aria-live="polite">
+      <h2 class="sektion_overskrift">Tak for din bestilling!</h2>
+      <p class="tak_tekst"></p>
+      <a href="index.html" class="knap knap_outline">Tilbage til forsiden</a>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+
+    <div class="footer_indhold">
+
+      <!-- Logo og citat -->
+      <div class="footer_brand">
+        <a href="index.html" class="footer_logo">
+          <img src="img/logo.png" alt="ForYou">
+        </a>
+
+        <p class="footer_citat">
+          “Her fandt jeg beauty-produkter,<br>
+          jeg havde råd til.”
+        </p>
+
+        <div class="footer_social">
+          <a href="#">Instagram</a>
+          <span>·</span>
+          <a href="#">TikTok</a>
+          <span>·</span>
+          <a href="#">Nyhedsbrev</a>
+        </div>
+      </div>
+
+      <!-- Shop -->
+      <details class="footer_gruppe">
+        <summary>Shop</summary>
+        <ul>
+          <li><a href="productlist.html">Makeup</a></li>
+          <li><a href="productlist.html">Hudpleje</a></li>
+          <li><a href="productlist.html">Parfume</a></li>
+          <li><a href="productlist.html">Nyheder</a></li>
+          <li><a href="productlist.html">Tilbud</a></li>
+        </ul>
+      </details>
+
+      <!-- Kundeservice -->
+      <details class="footer_gruppe">
+        <summary>Kundeservice</summary>
+        <ul>
+          <li><a href="#">Kontakt os</a></li>
+          <li><a href="#">Levering</a></li>
+          <li><a href="#">Returnering</a></li>
+          <li><a href="#">Spørgsmål &amp; svar</a></li>
+          <li><a href="#">Handelsbetingelser</a></li>
+        </ul>
+      </details>
+
+      <!-- Om ForYou -->
+      <details class="footer_gruppe">
+        <summary>Om ForYou</summary>
+        <ul>
+          <li><a href="#">Om os</a></li>
+          <li><a href="#">Bæredygtighed</a></li>
+          <li><a href="#">Privatlivspolitik</a></li>
+          <li><a href="#">Cookies</a></li>
+          <li><a href="#">Tilgængelighed</a></li>
+        </ul>
+      </details>
+
+    </div>
+
+    <p class="copyright">© 2026 ForYou</p>
+
+
+  </footer>
+
+</body>
+
+</html>

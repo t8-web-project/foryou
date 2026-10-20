@@ -1,0 +1,104 @@
+/* ===== Footer =====
+   Samme footer som på forsiden (index.css).
+   Link denne fil på sider, der bruger <footer class="site-footer"> */
+
+.site-footer {
+  margin-top: 60px;
+  padding: 40px 6% 24px;
+  background-color: var(--beige);
+  color: var(--bordeaux);
+}
+
+.site-footer .footer_indhold {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding: 0;
+}
+
+.footer_logo img {
+  width: 220px;
+  max-width: 65%;
+  margin-bottom: 16px;
+}
+
+.footer_citat {
+  color: var(--bordeaux);
+  font-size: 1.4rem;
+}
+
+.footer_social {
+  display: flex;
+  gap: 8px;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+}
+
+.footer_social a,
+.footer_gruppe li a {
+  color: var(--bordeaux);
+  text-decoration: none;
+}
+
+.footer_gruppe summary {
+  display: flex;
+  justify-content: space-between;
+  padding: 22px 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-overskrift);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.footer_gruppe summary::-webkit-details-marker {
+  display: none;
+}
+
+.footer_gruppe ul {
+  list-style: none;
+  padding-bottom: 20px;
+}
+
+.footer_gruppe li {
+  margin-bottom: 14px;
+}
+
+.site-footer .copyright {
+  margin-top: 28px;
+  padding: 0;
+  text-align: left;
+  color: var(--bordeaux);
+}
+
+@media (min-width: 1000px) {
+  .site-footer .footer_indhold {
+    grid-template-columns: 1.15fr 1fr 1fr 1fr;
+    gap: 40px;
+  }
+
+  .footer_logo img {
+    width: 110px;
+  }
+
+  .footer_citat {
+    max-width: 230px;
+    font-size: 0.9rem;
+  }
+
+  .footer_social {
+    font-size: 0.75rem;
+  }
+
+  .footer_gruppe summary {
+    padding: 0 0 12px;
+    cursor: default;
+    color: var(--brun);
+    font-size: 0.9rem;
+  }
+
+  .footer_gruppe li a {
+    color: var(--brun);
+    font-size: 0.8rem;
+  }
+}

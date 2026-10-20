@@ -1,3 +1,625 @@
-/* ===== Produktdetaljer =====
-   CSS der KUN gælder denne side.
-   Farver og fonte: brug variablerne fra style.css, fx var(--bordeaux) */
+/* ===== Layout (mobil) ===== */
+.product_container {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 0;
+}
+
+/* ===== Galleri ===== */
+.hovedbillede {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background-color: var(--beige);
+}
+
+/* Billederne ligger på en række og kan swipes */
+.billede_spor {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.billede_spor::-webkit-scrollbar {
+  display: none;
+}
+
+.billede_spor img {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  scroll-snap-align: start;
+}
+
+.hovedbillede .label {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+}
+
+.favorit_mobil.favorit_knap {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 42px;
+  height: 42px;
+}
+
+.favorit_mobil svg {
+  width: 22px;
+  height: 22px;
+}
+
+.pil {
+  position: absolute;
+  top: calc(50% - 22px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  background-color: var(--creme);
+  border-radius: 999px;
+}
+
+.pil svg {
+  width: 24px;
+  height: 24px;
+}
+
+.pil:hover {
+  background-color: var(--beige);
+}
+
+.pil_venstre {
+  left: 16px;
+}
+
+.pil_hoejre {
+  right: 16px;
+}
+
+.galleri_prikker {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background-color: var(--hvid);
+  border-radius: 999px;
+  transform: translateX(-50%);
+}
+
+.galleri_prikker span {
+  width: 6px;
+  height: 6px;
+  background-color: var(--beige);
+  border-radius: 50%;
+}
+
+.galleri_prikker span.aktiv {
+  width: 8px;
+  height: 8px;
+  background-color: var(--bordeaux);
+}
+
+.miniaturer {
+  display: none;
+}
+
+/* ===== Produktinfo ===== */
+.produktinfo {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 16px;
+}
+
+.produkt_top {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.brand_link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.produktinfo h1 {
+  margin-top: 6px;
+  font-family: var(--font-overskrift);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 34px;
+  letter-spacing: -0.2px;
+}
+
+.produkt_rating {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.produkt_rating .stjerner svg {
+  width: 16px;
+  height: 16px;
+}
+
+.laes_anmeldelser {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.laes_anmeldelser:hover {
+  text-decoration: underline;
+}
+
+.produkt_pris {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.stor_pris {
+  font-family: var(--font-ui);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 34px;
+}
+
+.foer {
+  color: var(--brun);
+}
+
+.produktinfo hr {
+  display: none;
+}
+
+/* ===== Farvevalg ===== */
+.koeb_form {
+  margin-top: 64px;
+}
+
+.variant {
+  border: none;
+}
+
+.variant legend {
+  display: flex;
+  gap: 6px;
+  color: var(--brun);
+}
+
+.farvevalg {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.farve {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 46px;
+  height: 46px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.farve input {
+  position: absolute;
+  opacity: 0;
+}
+
+.farve span {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.farve:has(input:checked) {
+  border-color: var(--bordeaux);
+}
+
+.farve:has(input:focus-visible) {
+  outline: 2px solid var(--bordeaux);
+  outline-offset: 2px;
+}
+
+/* ===== Køb-bar (fast i bunden på mobil) ===== */
+.koeb_bar {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px 20px;
+  background-color: var(--hvid);
+  box-shadow: 0 -4px 16px rgba(58, 0, 16, 0.12);
+}
+
+body {
+  padding-bottom: 96px;
+}
+
+.bar_pris {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-ui);
+}
+
+.bar_pris .ny_pris {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.bar_pris .foer_pris {
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--brun);
+}
+
+.cta {
+  flex: 1;
+  color: var(--hvid);
+  background-color: var(--bordeaux);
+}
+
+.cta:hover {
+  background-color: var(--brun);
+}
+
+.antal_vaelger,
+.favorit_stor {
+  display: none;
+}
+
+.antal_vaelger input {
+  width: 32px;
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+  border: none;
+  background: none;
+  appearance: textfield;
+}
+
+.antal_vaelger input::-webkit-inner-spin-button {
+  appearance: none;
+}
+
+/* ===== Fold-ud ===== */
+.fold_ud {
+  margin-top: 64px;
+}
+
+.fold_ud details {
+  padding-block: 16px;
+}
+
+.fold_ud summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-kort);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.fold_ud summary::-webkit-details-marker {
+  display: none;
+}
+
+.plus_minus {
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.plus_minus::before,
+.plus_minus::after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 3px;
+  width: 14px;
+  height: 1.6px;
+  background-color: var(--bordeaux);
+  border-radius: 1px;
+  transition: transform 0.2s;
+}
+
+.plus_minus::after {
+  transform: rotate(90deg);
+}
+
+details[open] > summary .plus_minus::after {
+  transform: rotate(0);
+}
+
+.fold_ud details > p,
+.fold_ud details > ul {
+  margin-top: 10px;
+}
+
+.levering {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.anmeldelser {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.anmeldelse_top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.anmeldelse_dato {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: var(--brun);
+}
+
+/* ===== Lignende produkter ===== */
+.lignende {
+  padding-top: 32px;
+}
+
+.lignende h2 {
+  margin-bottom: 14px;
+}
+
+/* Kortene kan swipes vandret på mobil */
+.lignende_container {
+  display: flex;
+  margin-right: -16px;
+  padding-right: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.lignende_container::-webkit-scrollbar {
+  display: none;
+}
+
+.lignende_container .produktkort {
+  flex: 0 0 173px;
+  scroll-snap-align: start;
+}
+
+/* ===== Desktop ===== */
+@media (min-width: 900px) {
+  body {
+    padding-bottom: 0;
+  }
+
+  .product_container {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 64px;
+    padding: 24px 80px;
+  }
+
+  .galleri {
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 620px;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .hovedbillede {
+    overflow: hidden;
+    background-color: var(--creme);
+    border-radius: 24px;
+  }
+
+  .hovedbillede .label {
+    top: 20px;
+    left: 20px;
+  }
+
+  .favorit_mobil.favorit_knap,
+  .galleri_prikker {
+    display: none;
+  }
+
+  .pil {
+    display: flex;
+  }
+
+  .miniaturer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  .miniature {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background-color: var(--creme);
+    border: 2.5px solid transparent;
+    border-radius: 12px;
+    opacity: 0.85;
+  }
+
+  .miniature img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .miniature.valgt {
+    border-color: var(--bordeaux);
+    opacity: 1;
+  }
+
+  .produktinfo {
+    flex: 1 1 596px;
+    gap: 36px;
+    padding: 0;
+  }
+
+  .produkt_top {
+    gap: 36px;
+  }
+
+  .produktinfo h1 {
+    margin-top: 8px;
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .produkt_rating {
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .produkt_rating .stjerner svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .produktinfo hr {
+    display: block;
+    height: 1px;
+    border: none;
+    background-color: var(--creme);
+  }
+
+  .koeb_form {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    margin-top: 0;
+  }
+
+  .variant legend {
+    margin-bottom: 0;
+  }
+
+  .farvevalg {
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .farve {
+    width: 42px;
+    height: 42px;
+  }
+
+  .farve span {
+    width: 32px;
+    height: 32px;
+  }
+
+  .koeb_bar {
+    position: static;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  .bar_pris {
+    display: none;
+  }
+
+  .antal_vaelger {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    background-color: var(--creme);
+    border-radius: 999px;
+  }
+
+  .antal_vaelger button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+  }
+
+  .antal_vaelger button:hover {
+    background-color: var(--beige);
+  }
+
+  .antal_vaelger svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .favorit_stor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 51px;
+    height: 51px;
+    border: 1.5px solid var(--bordeaux);
+    border-radius: 999px;
+  }
+
+  .favorit_stor svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: var(--brun);
+    stroke-width: 1.8;
+  }
+
+  .favorit_stor.valgt svg {
+    fill: var(--bordeaux);
+    stroke: var(--bordeaux);
+  }
+
+  .fold_ud {
+    margin-top: 0;
+  }
+
+  .fold_ud details {
+    padding-block: 18px;
+  }
+
+  .lignende {
+    padding-top: 96px;
+  }
+
+  .lignende h2 {
+    margin-bottom: 24px;
+  }
+
+  .lignende_container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-right: 0;
+    padding-right: 0;
+    overflow: visible;
+  }
+}

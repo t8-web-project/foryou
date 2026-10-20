@@ -1,0 +1,371 @@
+/* ===== Layout ===== */
+.kurv_side {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-top: 8px;
+}
+
+.kurv h1 {
+  margin-bottom: 16px;
+  font-family: var(--font-overskrift);
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 42px;
+  letter-spacing: -0.5px;
+}
+
+/* ===== Varer i kurven ===== */
+.kurv_liste {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vare {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 12px 16px;
+  padding: 12px;
+  background-color: var(--hvid);
+  border: 1px solid var(--beige);
+  border-radius: 16px;
+}
+
+.vare img {
+  grid-row: span 2;
+  width: 88px;
+  height: 88px;
+  object-fit: cover;
+  background-color: var(--creme);
+  border-radius: 12px;
+}
+
+.vare h3 {
+  font-family: var(--font-broed);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.vare h3 a:hover {
+  text-decoration: underline;
+}
+
+.vare_farve {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: var(--brun);
+}
+
+.vare_bund {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.vare_pris {
+  font-family: var(--font-ui);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.antal_vaelger {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  background-color: var(--creme);
+  border-radius: 999px;
+}
+
+.antal_vaelger button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+}
+
+.antal_vaelger button:hover {
+  background-color: var(--beige);
+}
+
+.antal_vaelger svg {
+  width: 18px;
+  height: 18px;
+}
+
+.antal_vaelger span {
+  min-width: 24px;
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.fjern {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  text-decoration: underline;
+}
+
+.tom_kurv {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px 0;
+}
+
+/* ===== Opsummering ===== */
+.opsummering {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-self: flex-start;
+  width: 100%;
+  padding: 24px;
+  background-color: var(--hvid);
+  border: 1px solid var(--beige);
+  border-radius: 20px;
+}
+
+.opsummering h2 {
+  font-family: var(--font-kort);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+
+.opsummering dl {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: var(--font-ui);
+  font-size: 15px;
+}
+
+.opsummering dl div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.opsummering .total {
+  padding-top: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  border-top: 1px solid var(--beige);
+}
+
+.total span {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.fragt_besked {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--brun);
+}
+
+/* ===== Kassen ===== */
+.kasse {
+  padding-top: 48px;
+  scroll-margin-top: 80px;
+}
+
+.kasse h2 {
+  margin-bottom: 24px;
+}
+
+.kasse_form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 720px;
+}
+
+.kasse_form fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: none;
+}
+
+.kasse_form legend {
+  margin-bottom: 16px;
+  font-family: var(--font-kort);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+
+.felt_raekke {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.felt {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 6px;
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.felt input {
+  height: 48px;
+  padding: 0 16px;
+  font-weight: 400;
+  background-color: var(--hvid);
+  border: 1px solid var(--beige);
+  border-radius: 8px;
+}
+
+.felt input:focus {
+  border-color: var(--bordeaux);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(153, 28, 58, 0.2);
+}
+
+/* Fejlbeskeder vises først når brugeren har prøvet at bestille */
+.fejl {
+  display: none;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--bordeaux);
+}
+
+.vist_fejl .felt input:invalid {
+  border-color: var(--bordeaux);
+}
+
+.vist_fejl .felt input:invalid ~ .fejl,
+.vist_fejl .betingelser:has(input:invalid) ~ .betingelser_fejl {
+  display: block;
+}
+
+.valg {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.valg input {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  appearance: none;
+  background-color: var(--hvid);
+  border: 1.5px solid var(--bordeaux);
+  cursor: pointer;
+  transition: border-width 0.15s;
+}
+
+.valg input[type="radio"] {
+  border-radius: 50%;
+}
+
+.valg input[type="radio"]:checked {
+  border-width: 6px;
+}
+
+.valg input[type="checkbox"] {
+  border-radius: 4px;
+}
+
+.valg input[type="checkbox"]:checked {
+  background: var(--bordeaux) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center / 14px no-repeat;
+}
+
+.valg a {
+  text-decoration: underline;
+}
+
+.betingelser_fejl {
+  margin-top: -16px;
+}
+
+.bestil {
+  align-self: flex-start;
+  min-width: 220px;
+}
+
+.tak {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding-top: 48px;
+}
+
+.tak[hidden] {
+  display: none;
+}
+
+/* ===== Desktop ===== */
+@media (min-width: 900px) {
+  .kurv_side {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 64px;
+    padding-top: 32px;
+  }
+
+  .kurv {
+    flex: 1;
+  }
+
+  .kurv h1 {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .vare {
+    grid-template-columns: 120px 1fr;
+    padding: 16px;
+    border-color: var(--creme);
+  }
+
+  .vare img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .opsummering {
+    position: sticky;
+    top: 160px;
+    flex: 0 0 380px;
+    background-color: var(--creme);
+    border: none;
+    border-radius: 24px;
+  }
+
+  .kasse {
+    padding-top: 80px;
+  }
+
+  .felt_raekke {
+    flex-direction: row;
+  }
+
+  .felt_lille {
+    flex: 0 0 140px;
+  }
+
+  .felt input {
+    border-color: var(--beige);
+  }
+}
