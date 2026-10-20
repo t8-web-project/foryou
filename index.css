@@ -1,3 +1,974 @@
 /* ===== Forside =====
    CSS der KUN gælder denne side.
    Farver og fonte: brug variablerne fra style.css, fx var(--bordeaux) */
+/* 
+
+/* ===== Forside ===== */
+
+main {
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.section1 {
+  background-color: var(--beige);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* Hero image */
+.section1 .firstimg {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Text content */
+.sec1div {
+  padding: 24px;
+}
+
+.sec1div p:first-child {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--bordeaux);
+}
+
+.sec1div h1 {
+  margin-bottom: 20px;
+}
+
+.sec1div p:nth-of-type(2) {
+  margin-bottom: 24px;
+}
+
+/* Buttons */
+.bnt1 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bnt1 button {
+  width: 100%;
+  border-radius: 999px;
+  padding: 14px 24px;
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  border: 2px solid var(--bordeaux);
+}
+
+.bnt1 button a {
+  display: block;
+  text-decoration: none;
+}
+
+.firstButton {
+  background-color: var(--bordeaux) !important;
+}
+
+.firstButton a {
+  color: var(--hvid);
+}
+
+.secondButton {
+  background-color: transparent !important;
+}
+
+.secondButton a {
+  color: var(--bordeaux);
+}
+
+.bnt1 button:hover {
+  background-color: var(--brun) !important;
+}
+
+.bnt1 button:hover a {
+  color: var(--hvid);
+}
+
+/* ----------------------------------slide cards--------------------------------- */
+
+/* ===== Slideshow ===== */
+
+.h2_1 {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+.mySlides {
+  display: none;
+  position: relative;
+  height: 600px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.mySlides img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Gradient behind the text */
+.mySlides::after {
+  content: "";
+  position: absolute;
+  inset: 50% 0 0;
+  background: linear-gradient(to bottom, transparent, rgba(80, 20, 30, 0.7));
+  pointer-events: none;
+}
+
+/* Category text */
+.mySlides .text {
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  width: 100%;
+  padding: 16px;
+  z-index: 2;
+  color: white;
+  text-align: center;
+  display: block;
+}
+
+.mySlides .text h3 {
+  color: white;
+  font-size: 2rem;
+  margin: 0 0 10px;
+}
+
+.mySlides .text p {
+  color: white;
+  margin: 0 0 12px;
+}
+
+.mySlides .text a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Slide number */
+.numbertext {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  z-index: 2;
+  color: white;
+}
+
+/* Arrows */
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  padding: 16px;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+/* Dots */
+.dots-container {
+  text-align: center;
+  padding: 24px 0;
+}
+
+.dot {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin: 0 4px;
+  border-radius: 50%;
+  background: #bbb;
+  cursor: pointer;
+}
+
+.dot.active,
+.dot:hover {
+  background: #717171;
+}
+
+/* Fade animation */
+.fade {
+  animation: fade 0.5s ease;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ===== Tilbudskort ===== */
+
+.tilbud-kort {
+  width: 100%;
+  max-width: 615px;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 36px;
+  background-color: #9f1939;
+}
+
+/* Billede øverst */
+.tilbud-billede {
+  display: block;
+  width: 100%;
+  height: 308px;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Indhold nederst */
+.tilbud-indhold {
+  padding: 40px;
+  color: white;
+}
+
+/* Lyserødt mærkat */
+.tilbud-maerke {
+  display: inline-block;
+  padding: 9px 18px;
+  margin-bottom: 24px;
+  border-radius: 30px;
+  background-color: #f17c80;
+  color: #672d30;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Overskrift */
+.tilbud-indhold h2 {
+  margin: 0 0 20px;
+  color: white;
+  font-family: "Kaisei Tokumin", serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.3;
+}
+
+/* Beskrivelse */
+.tilbud-indhold p {
+  margin: 0 0 24px;
+  color: white;
+  font-family: "Junge", serif;
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+/* Hvid knap */
+.tilbud-knap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  /* padding: 18px 24px; */
+  border-radius: 50px;
+  background-color: white;
+  color: #9f1939;
+  font-family: "Inter", sans-serif;
+  /* font-size: 1.35rem; */
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.tilbud-knap:hover {
+  background-color: #f5e4d1;
+  color: #672d30;
+}
+
+/* Mobil */
+@media (max-width: 767px) {
+  .tilbud-kort {
+    max-width: 100%;
+    border-radius: 28px;
+    margin: 30px auto;
+  }
+
+  .tilbud-billede {
+    height: 260px;
+  }
+
+  .tilbud-indhold {
+    padding: 28px 24px;
+  }
+
+  .tilbud-maerke {
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+  }
+
+  .tilbud-indhold h2 {
+    font-size: 1.8rem;
+  }
+
+  .tilbud-indhold p {
+    font-size: 1.05rem;
+  }
+
+  .tilbud-knap {
+    min-height: 64px;
+    font-size: 1.1rem;
+  }
+
+  .tilbud-indhold .tilbud-knap {
+    width: fit-content;
+    width: 100%;
+    min-height: 0;
+    height: 48px;
+    padding: 0 15px;
+    font-size: 1rem;
+    align-self: flex-start;
+  }
+}
+
+/* ------------------------------------------------ */
+
+/* ===== Footer ===== */
+.site-footer {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 60px;
+  padding: 40px 6% 24px;
+  background-color: var(--beige);
+  color: var(--bordeaux);
+}
+
+.footer_indhold {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+/* Logo */
+.footer_logo {
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.footer_logo img {
+  display: block;
+  width: 220px;
+  max-width: 65%;
+  height: auto;
+}
+
+/* Citat */
+.footer_citat {
+  max-width: 750px;
+  margin: 0 0 20px;
+  color: var(--bordeaux);
+  font-family: "Junge", serif;
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+
+/* Sociale links */
+.footer_social {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+}
+
+.footer_social a {
+  color: var(--bordeaux);
+  text-decoration: none;
+}
+
+.footer_social a:hover {
+  text-decoration: underline;
+}
+
+/* =====================================
+   FOOTER – MOBIL
+===================================== */
+
+.footer_gruppe {
+  min-width: 0;
+  border: none;
+}
+
+.footer_gruppe summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 0;
+  cursor: pointer;
+  list-style: none;
+  color: var(--bordeaux);
+  font-family: "Kaisei Tokumin", serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.footer_gruppe summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Pil ned */
+.footer_gruppe summary::after {
+  content: "";
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid var(--bordeaux);
+  border-bottom: 2px solid var(--bordeaux);
+  transform: rotate(45deg) translateY(-3px);
+  transition: transform 0.2s ease;
+}
+
+/* Pil op når menuen åbnes */
+.footer_gruppe[open] summary::after {
+  transform: rotate(225deg);
+}
+
+/* Links i dropdown */
+.footer_gruppe ul {
+  display: block;
+  list-style: none;
+  padding: 0 0 20px;
+  margin: 0;
+}
+
+.footer_gruppe li {
+  margin-bottom: 14px;
+}
+
+.footer_gruppe li a {
+  display: inline-block;
+  color: var(--bordeaux);
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.footer_gruppe li a:hover {
+  text-decoration: underline;
+}
+
+/* Copyright */
+.copyright {
+  margin: 28px 0 0;
+  color: var(--bordeaux);
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+}
+
+/* ===== Populære produkter ===== */
+
+.populaere-produkter {
+  margin: 48px 0;
+}
+
+.produkt-overskrift {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.produkt-overskrift h2 {
+  margin: 0;
+  color: var(--brun);
+  font-family: "Kaisei Tokumin", serif;
+  font-size: 1.5rem;
+}
+
+.se-alle {
+  color: var(--bordeaux);
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.se-alle span {
+  margin-left: 4px;
+}
+
+/* Produktgrid */
+
+.product_list_container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding: 0;
+}
+
+/* Produktkort */
+
+.product {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  background: white;
+  border: 1px solid #ead9b9;
+  border-radius: 14px;
+}
+
+.product img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  padding: 12px;
+  box-sizing: border-box;
+  background-color: var(--beige);
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+}
+
+.product-brand {
+  margin: 0 0 5px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.product-title {
+  min-height: 36px;
+  margin: 0 0 10px;
+  color: var(--brun);
+  font-family: "Junge", serif;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.product-rating {
+  margin: auto 0 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.7rem;
+}
+
+.product-rating .stars {
+  color: var(--bordeaux);
+  letter-spacing: 1px;
+}
+
+.product-prices {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 12px;
+  font-family: "Inter", sans-serif;
+}
+
+.product-price {
+  color: var(--bordeaux);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.product-old-price {
+  color: #765b54;
+  font-size: 0.65rem;
+  text-decoration: line-through;
+}
+
+.product a.product-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 38px;
+  padding: 8px;
+  border: 1px solid var(--bordeaux);
+  border-radius: 30px;
+  background: white;
+  color: var(--bordeaux);
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.product a.product-button:hover {
+  background: var(--bordeaux);
+  color: white;
+}
+
+.product-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  padding: 5px 9px;
+  border-radius: 20px;
+  background: #ef8186;
+  color: #672d30;
+  font-family: "Inter", sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+}
+
+/* ===== Desktop version ===== */
+
+@media (min-width: 768px) {
+  main {
+    width: 86%;
+    max-width: 1280px;
+    margin: 32px auto 60px;
+  }
+
+  /* Hero */
+  .section1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 450px;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .section1 .firstimg {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: cover;
+  }
+
+  .sec1div {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 32px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .sec1div p:first-child {
+    font-size: 0.75rem;
+    margin-bottom: 10px;
+  }
+
+  .sec1div h1 {
+    font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+    line-height: 1.2;
+    margin: 0 0 14px;
+  }
+
+  .sec1div p:nth-of-type(2) {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+
+  .bnt1 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .bnt1 button {
+    width: auto;
+    padding: 10px 18px;
+    font-size: 0.8rem;
+  }
+
+  /* Kategorioverskrift */
+  .h2_1 {
+    margin: 34px 0 18px;
+    font-size: 1.7rem;
+  }
+
+  /* Tre kategorikort */
+  .slideshow-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    max-width: none;
+    overflow: visible;
+  }
+
+  .mySlides {
+    display: block !important;
+    position: relative;
+    width: 100%;
+    height: 420px;
+    min-width: 0;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .mySlides img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .mySlides::after {
+    content: "";
+    position: absolute;
+    inset: 40% 0 0;
+    background: linear-gradient(to bottom, transparent, rgba(100, 15, 35, 0.8));
+    pointer-events: none;
+  }
+
+  /* Tekst nederst på kortene */
+  .mySlides .text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 16px;
+    text-align: left;
+    z-index: 2;
+  }
+
+  .mySlides .text h3 {
+    font-size: 1.1rem;
+    margin: 0 0 5px;
+  }
+
+  .mySlides .text p {
+    font-size: 0.75rem;
+    line-height: 1.5;
+    margin: 0 0 8px;
+  }
+
+  .mySlides .text a {
+    font-size: 0.75rem;
+  }
+
+  /* Ingen pile, tal eller prikker på desktop */
+  .numbertext,
+  .prev,
+  .next,
+  .dots-container {
+    display: none !important;
+  }
+
+  /* Tilbudskort med luft omkring */
+  .tilbud-kort {
+    margin: 64px auto;
+  }
+
+  .dot {
+    display: none !important;
+  }
+
+  .tilbud-kort {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    width: 100%;
+    max-width: 1100px;
+    margin: 64px auto;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  /* Billede til venstre */
+  .tilbud-billede {
+    width: 100%;
+    height: 300px;
+    min-height: 300px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* Tekst til højre */
+  .tilbud-indhold {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px;
+    min-width: 0;
+  }
+
+  .tilbud-maerke {
+    margin-bottom: 18px;
+    font-size: 0.85rem;
+  }
+
+  .tilbud-indhold h2 {
+    font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+
+  .tilbud-indhold p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+
+  .tilbud-knap {
+    width: auto;
+    min-height: 48px;
+    padding: 12px 28px;
+    font-size: 1rem;
+  }
+
+  .populaere-produkter {
+    margin: 48px 0;
+  }
+
+  .produkt-overskrift h2 {
+    font-size: 1.6rem;
+  }
+
+  .product_list_container {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .product img {
+    aspect-ratio: 1 / 1;
+  }
+
+  .site-footer {
+    width: 100%;
+    margin-top: 60px;
+    padding: 48px 5% 32px;
+    background-color: var(--beige);
+    color: var(--bordeaux);
+    box-sizing: border-box;
+  }
+
+  .footer_indhold {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  /* Logo */
+  .footer_logo {
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+
+  .footer_logo img {
+    display: block;
+    width: 110px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Citat */
+  .footer_citat {
+    max-width: 230px;
+    margin: 0 0 12px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  /* Sociale links */
+  .footer_social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 0.75rem;
+  }
+
+  .footer_social a {
+    color: var(--bordeaux);
+    text-decoration: none;
+  }
+
+  /* Shop, Kundeservice og Om ForYou */
+  .footer_gruppe {
+    min-width: 0;
+    border: none;
+  }
+
+  .footer_gruppe summary {
+    padding: 0 0 12px;
+    color: var(--brun);
+    font-family: "Kaisei Tokumin", serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: default;
+    list-style: none;
+  }
+
+  .footer_gruppe summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .footer_gruppe summary::after {
+    display: none;
+  }
+
+  .footer_gruppe ul {
+    display: block;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .footer_gruppe li {
+    margin-bottom: 10px;
+  }
+
+  .footer_gruppe li a {
+    color: var(--brun);
+    font-family: "Junge", serif;
+    font-size: 0.8rem;
+    text-decoration: none;
+  }
+
+  .footer_gruppe li a:hover {
+    text-decoration: underline;
+  }
+
+  /* Copyright */
+  .site-footer .copyright {
+    margin: 28px 0 0;
+    color: var(--bordeaux);
+    font-family: "Inter", sans-serif;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+}
